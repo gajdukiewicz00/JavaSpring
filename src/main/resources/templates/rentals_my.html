@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Мои аренды</title>
+</head>
+<body>
+<h1>Мои аренды</h1>
+
+<table border="1">
+    <tr>
+        <th>RentalID</th>
+        <th>BikeID</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Cost</th>
+        <th>Действие</th>
+    </tr>
+    <tr th:each="r : ${rentals}">
+        <td th:text="${r.rentalId}">rId</td>
+        <td th:text="${r.bicycleId}">bId</td>
+        <td th:text="${r.startdate}">start</td>
+        <td th:text="${r.enddate}">end</td>
+        <td th:text="${r.cost}">0.0</td>
+        <td>
+            <form th:if="${r.enddate} == null" th:action="@{/rentals/return}" method="post">
+                <input type="hidden" name="rentalId" th:value="${r.rentalId}"/>
+                <button type="submit">Вернуть</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<a th:href="@{/bicycles}">Доступные велосипеды</a> |
+<a th:href="@{/logout}">Выйти</a>
+</body>
+</html>

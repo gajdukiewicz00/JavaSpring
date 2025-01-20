@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Выход из системы</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+
+<h2>Вы действительно хотите выйти?</h2>
+
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Да, выйти</button>
+</form>
+
+<a th:href="@{/}">Отмена</a>
+
+</body>
+</html>

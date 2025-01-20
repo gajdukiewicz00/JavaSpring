@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список велосипедов</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container">
+    <div class="section">
+        <h4>Доступные Велосипеды</h4>
+        <div class="row">
+            <div class="col s12 m6 l4" th:each="bike : ${bikes}">
+                <div class="card hoverable">
+                    <div class="card-image">
+                        <img th:src="${bike.imageUrl}" alt="Bike Image">
+                        <span class="card-title" th:text="${bike.name}">Bike Name</span>
+                    </div>
+                    <div class="card-content">
+                        <p th:text="${bike.shortDesc}">Short Description</p>
+                    </div>
+                    <div class="card-action">
+                        <a th:href="@{/bikes/{id}(id=${bike.id})}">
+                            <i class="material-icons left">info</i>Подробнее
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!-- src/main/resources/templates/bike-details.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(title=${title})">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container">
+    <div class="section">
+        <div class="card">
+            <div class="card-image">
+                <img th:src="${bike.imageUrl}" alt="Bike Image">
+                <span class="card-title" th:text="${bike.name}">Bike Name</span>
+            </div>
+            <div class="card-content">
+                <p th:text="${bike.fullDesc}">Full Description</p>
+                <h5>Цена аренды в час: <span th:text="${bike.pricePerHour}">0.00</span> руб.</h5>
+            </div>
+            <div class="card-action">
+                <a href="/bikes" class="waves-effect waves-light btn teal lighten-1">
+                    <i class="material-icons left">arrow_back</i>Назад к списку
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

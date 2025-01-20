@@ -1,0 +1,51 @@
+body {
+    background-color: #fafafa;
+}
+
+.card {
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.btn {
+    border-radius: 50px;
+}
+
+.nav-wrapper .brand-logo {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.input-field input:focus + label {
+    color: #2a9d8f !important;
+}
+
+.input-field input:focus {
+    border-bottom: 2px solid #2a9d8f !important;
+    box-shadow: 0 1px 0 0 #2a9d8f;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+table th {
+    background-color: #2a9d8f;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
