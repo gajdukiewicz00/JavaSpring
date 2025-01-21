@@ -1,29 +1,25 @@
-<!-- src/main/resources/templates/bike-details.html -->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head(title=${title})">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Информация о велосипеде</title>
 </head>
 <body>
-<div th:replace="~{fragments/navbar :: navbar}"></div>
-
-<div class="container">
-    <div class="section">
-        <div class="card">
-            <div class="card-image">
-                <img th:src="${bike.imageUrl}" alt="Bike Image">
-                <span class="card-title" th:text="${bike.name}">Bike Name</span>
-            </div>
-            <div class="card-content">
-                <p th:text="${bike.fullDesc}">Full Description</p>
-                <h5>Цена аренды в час: <span th:text="${bike.pricePerHour}">0.00</span> руб.</h5>
-            </div>
-            <div class="card-action">
-                <a href="/bikes" class="waves-effect waves-light btn teal lighten-1">
-                    <i class="material-icons left">arrow_back</i>Назад к списку
-                </a>
-            </div>
-        </div>
+<div class="navbar">
+    <div class="logo">BikeRental</div>
+    <div>
+        <a href="/">Главная</a>
+        <a href="/logout">Выйти</a>
     </div>
+</div>
+<div class="container">
+    <h1>Горный велосипед</h1>
+    <img src="/images/mountain-bike.jpg" alt="Горный велосипед">
+    <p>Описание: Велосипед для горных дорог, подходит для сложных маршрутов.</p>
+    <p>Цена: 500 руб./день</p>
+    <button class="button">Арендовать</button>
 </div>
 </body>
 </html>

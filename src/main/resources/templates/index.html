@@ -1,51 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Bike Rental - Главная</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-            rel="stylesheet">
-
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Главная</title>
 </head>
 <body>
-
-<header>
-    <div class="container">
-        <div class="title">Bike Rental</div>
-        <nav>
-            <div sec:authorize="isAnonymous()">
-                <a th:href="@{/login}">Войти</a>
-                <a th:href="@{/register}">Регистрация</a>
-            </div>
-
-            <div sec:authorize="isAuthenticated()">
-                Привет, <span sec:authentication="name">username</span>!
-                <a th:href="@{/logout}">Выйти</a>
-            </div>
-
-        </nav>
+<div class="navbar">
+    <div class="logo">BikeRental</div>
+    <div>
+        <a href="/">Главная</a>
+        <a href="/bikes">Список велосипедов</a>
+        <a href="/logout">Выйти</a>
     </div>
-</header>
-
-<main class="container">
-    <h1 th:text="${message}">Добро пожаловать в Bike Rental!</h1>
-    <p>Откройте для себя мир велосипедов!</p>
-
+</div>
+<div class="container">
+    <h1>Добро пожаловать в BikeRental</h1>
+    <h2>Ваши последние аренды:</h2>
     <div class="card">
-        <h2>Что мы предлагаем?</h2>
-        <p>Быструю и удобную аренду велосипедов на любой срок. Горные, шоссейные и городские модели!</p>
-        <a th:href="@{/bikes}" class="btn">Посмотреть велосипеды</a>
+        <h3>Горный велосипед</h3>
+        <p>Дата: 20 января 2025</p>
+        <p>Цена: 500 руб./день</p>
     </div>
-</main>
-
-<footer>
-    <p>© 2025 Bike Rental. Все права защищены.</p>
-</footer>
-
+    <div class="card">
+        <h3>Городской велосипед</h3>
+        <p>Дата: 18 января 2025</p>
+        <p>Цена: 300 руб./день</p>
+    </div>
+</div>
 </body>
 </html>

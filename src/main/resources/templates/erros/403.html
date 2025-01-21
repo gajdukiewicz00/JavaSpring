@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <title>Доступ запрещён (403)</title>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Ошибка 403</title>
 </head>
 <body>
-<h1>403 Forbidden</h1>
-<p>У вас нет прав на просмотр этой страницы.</p>
-<a th:href="@{/}">На главную</a>
+<div class="navbar">
+    <div class="logo">BikeRental</div>
+</div>
+<div class="container">
+    <h1>Ошибка 403</h1>
+    <p>У вас нет доступа к этой странице.</p>
+    <a href="/" class="button">Вернуться на главную</a>
+</div>
 </body>
 </html>
-

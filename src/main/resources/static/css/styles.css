@@ -1,51 +1,82 @@
+/* styles.css */
 body {
-    background-color: #fafafa;
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #bb86fc;
+}
+
+a:hover {
+    color: #3700b3;
+}
+
+.navbar {
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+.navbar .logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #bb86fc;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
 }
 
 .card {
-    transition: box-shadow 0.3s ease-in-out;
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    transform: scale(1.02);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.btn {
-    border-radius: 50px;
+.card img {
+    width: 100%;
+    border-radius: 8px;
 }
 
-.nav-wrapper .brand-logo {
-    font-size: 1.5rem;
-    letter-spacing: 2px;
+.card h3 {
+    color: #bb86fc;
 }
 
-.input-field input:focus + label {
-    color: #2a9d8f !important;
+.button {
+    display: inline-block;
+    background-color: #bb86fc;
+    color: #121212;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
 }
 
-.input-field input:focus {
-    border-bottom: 2px solid #2a9d8f !important;
-    box-shadow: 0 1px 0 0 #2a9d8f;
-}
-
-table {
-    border-collapse: collapse;
-}
-
-table th, table td {
-    padding: 1rem;
-    text-align: left;
-}
-
-table th {
-    background-color: #2a9d8f;
-    color: white;
-}
-
-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-table tr:hover {
-    background-color: #ddd;
+.button:hover {
+    background-color: #3700b3;
+    color: #fff;
 }

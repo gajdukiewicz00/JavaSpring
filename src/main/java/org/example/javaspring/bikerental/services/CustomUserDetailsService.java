@@ -1,31 +1,33 @@
 package org.example.javaspring.bikerental.services;
 
-import org.example.javaspring.bikerental.entities.User;
-import org.example.javaspring.bikerental.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.*;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import org.example.javaspring.bikerental.repositories.UserRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public CustomUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // username = name (логин) в нашей таблице
-        User user = userRepository.findByName(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+        // Загружаем пользователя из базы данных
+        org.example.javaspring.bikerental.entities.User user = userRepository.findByLogin(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден: " + username));
 
-        // Возвращаем объект UserDetails
-        return new org.springframework.security.core.userdetails.User(
-                user.getName(),
-                user.getPassword(),
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
-        );
+        // Создаём UserDetails для Spring Security
+        return User.builder()
+                .username(user.getLogin())
+                .password(user.getPassword()) // Должен быть хешированный пароль
+                .roles(user.getRole())       // Роль: "USER", "ADMIN"
+                .build();
     }
 }
