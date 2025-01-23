@@ -1,12 +1,11 @@
 package org.example.javaspring.bikerental.services;
 
-
-import org.springframework.security.core.userdetails.User;
+import org.example.javaspring.bikerental.entities.User;
+import org.example.javaspring.bikerental.repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.example.javaspring.bikerental.repositories.UserRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -19,15 +18,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // Загружаем пользователя из базы данных
-        org.example.javaspring.bikerental.entities.User user = userRepository.findByLogin(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден: " + username));
+        User user = userRepository.findByLogin(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
 
-        // Создаём UserDetails для Spring Security
-        return User.builder()
+        return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getLogin())
-                .password(user.getPassword()) // Должен быть хешированный пароль
-                .roles(user.getRole())       // Роль: "USER", "ADMIN"
+                .password(user.getPassword())
+                .roles(user.getRole())
                 .build();
     }
 }

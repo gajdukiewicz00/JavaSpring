@@ -1,3 +1,4 @@
+/*
 package org.example.javaspring.bikerental.controllers;
 
 import org.example.javaspring.bikerental.entities.User;
@@ -17,10 +18,6 @@ public class AuthController {
     @Autowired
     private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
 
     @GetMapping("/register")
     public String registerForm(Model model) {
@@ -42,3 +39,4 @@ public class AuthController {
         return "logout";
     }
 }
+*/

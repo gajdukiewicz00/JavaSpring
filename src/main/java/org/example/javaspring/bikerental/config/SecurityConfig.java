@@ -53,9 +53,4 @@ public class SecurityConfig {
 
         return http.build();
     }
-
-
-    public void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
-    }
 }
