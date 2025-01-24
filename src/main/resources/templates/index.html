@@ -28,7 +28,7 @@
 
     <div class="cards-grid">
         <div class="card" th:each="bike : ${bikes}">
-            <img th:src="@{${bike.imageUrl}}" alt="Картинка велосипеда" style="max-width: 300px;">
+            <img th:src="${bike.imageUrl}" alt="${bike.title}" style="max-width: 300px;">
             <h3 th:text="${bike.title}"></h3>
             <p th:text="${bike.description}"></p>
             <p>Цена: <span th:text="${bike.price}">0</span></p>

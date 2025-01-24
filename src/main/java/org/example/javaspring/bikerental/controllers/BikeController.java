@@ -70,23 +70,55 @@ public class BikeController {
         return "redirect:/";
     }
 
-    @PostMapping("/new")
-    public String createBike(@RequestParam String title,
-                             @RequestParam String description,
-                             @RequestParam double price,
-                             HttpSession session) {
+    @PostMapping("/bikes/save")
+    public String saveBike(@RequestParam("title") String title,
+                           @RequestParam("description") String description,
+                           @RequestParam("price") double price,
+                           @RequestParam(value = "file", required = false) MultipartFile file,
+                           Model model) {
+        try {
+            // Создаём объект Bike
+            Bike bike = new Bike();
+            bike.setTitle(title);
+            bike.setDescription(description);
+            bike.setPrice(price);
+            bike.setRented(false);
 
+            // Проверяем наличие файла
+            if (file != null && !file.isEmpty()) {
+                // Сохраняем файл
+                String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+                String uploadDir = "src/main/resources/static/images/";
+                Path filePath = Paths.get(uploadDir + fileName);
+                Files.createDirectories(filePath.getParent());
+                Files.write(filePath, file.getBytes());
 
-        // Создание объекта Bike
-        Bike bike = new Bike(title, description, false, price);
+                bike.setImageUrl("/images/" + fileName);
+            } else {
+                // Устанавливаем изображение по умолчанию
+                bike.setImageUrl("/images/default-bike.jpg");
+            }
 
-        // Сохранение в базе данных
-        bikeService.save(bike);
+            // Сохраняем объект в базе данных
+            bikeRepository.save(bike);
 
-        // Перенаправление в админку
-        return "redirect:/admin";
+            return "redirect:/admin";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("error", "Ошибка при сохранении велосипеда: " + e.getMessage());
+            return "error";
+        }
     }
 
+
+
+
+    @GetMapping("/bikes/edit/{id}")
+    public String editBike(@PathVariable Long id, Model model) {
+        Bike bike = bikeRepository.findById(id).orElseThrow(() -> new RuntimeException("Bike not found"));
+        model.addAttribute("bike", bike);
+        return "bike-form";
+    }
 
 
 }

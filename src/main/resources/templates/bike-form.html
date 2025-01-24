@@ -17,7 +17,7 @@
 <div class="container">
     <h1 class="title">Велосипед - форма</h1>
 
-    <form th:action="@{${actionUrl}}" method="post">
+    <form th:action="@{${actionUrl}}" method="post" enctype="multipart/form-data">
         <p>
             <label>Название:<br/>
                 <input type="text"
@@ -26,7 +26,6 @@
                        placeholder="Например: Горный велосипед Trek"/>
             </label>
         </p>
-
         <p>
             <label>Описание:<br/>
                 <textarea name="description"
@@ -34,7 +33,6 @@
                           th:text="${bike.description}"></textarea>
             </label>
         </p>
-
         <p>
             <label>Цена:<br/>
                 <input type="number" step="0.01"
@@ -42,7 +40,6 @@
                        th:value="${(bike.price != null) ? bike.price : 0.0}"/>
             </label>
         </p>
-
         <p>
             <label>
                 <input type="checkbox"
@@ -51,24 +48,13 @@
                 Арендован
             </label>
         </p>
-
         <p>
-            <form method="post" action="/admin/new" enctype="multipart/form-data">
-                <label for="file">
-                    Загрузить изображение:
-                    <input type="file"
-                           id="file"
-                           name="file"
-                           th:required="${bike.imageUrl == null}"/>
-                </label>
-            </form>
+            <label for="file">Загрузить изображение:
+                <input type="file" id="file" name="file"/>
+            </label>
         </p>
-
-        <form method="post" action="/bikes/save" 90>
-            <button type="submit" class="btn-primary">Сохранить</button>
-        </form>
+        <button type="submit" class="btn-primary">Сохранить</button>
     </form>
-
 </div>
 </body>
 </html>
