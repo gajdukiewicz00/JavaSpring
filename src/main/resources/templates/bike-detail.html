@@ -27,6 +27,7 @@
 
 <div class="container">
     <h1 class="title" th:text="${bike.title}">Bike Title</h1>
+    <img src="${bike.imageUrl}" alt="${bike.title}" id="bikeImage">
     <p th:text="${bike.description}">Описание велосипеда...</p>
     <p>Цена: <span th:text="${bike.price}">0.0</span></p>
     <p>Статус: <span th:text="${bike.rented} ? 'Арендован' : 'Доступен'">Статус</span></p>
@@ -41,8 +42,10 @@
     </div>
 
     <p style="margin-top: 1rem;">
-        <a class="nav-btn" th:href="@{/}">Вернуться на главную</a>
-    </p>
+    <form action="/" method="get">
+        <button class="btn-primary" type="submit">Вернуться на главную</button>
+    </form>
+
 </div>
 
 </body>

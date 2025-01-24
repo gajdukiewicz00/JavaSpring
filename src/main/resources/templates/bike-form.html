@@ -52,6 +52,12 @@
             </label>
         </p>
 
+        <form method="post" action="/bikes/${bike.id}/uploadImage" enctype="multipart/form-data">
+            <label for="file">Загрузить изображение:</label>
+            <input type="file" name="file" id="file" required>
+        </form>
+
+
         <button type="submit" class="btn-primary">Сохранить</button>
     </form>
 

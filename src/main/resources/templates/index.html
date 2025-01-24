@@ -26,16 +26,16 @@
 <div class="container">
     <h1 class="title">Список велосипедов</h1>
 
-    <div class="cards-grid" th:each="bike : ${bikes}">
-        <div class="card">
-            <div class="card__title" th:text="${bike.title}">Название велосипеда</div>
-            <p class="card__desc" th:text="${bike.description}">Описание</p>
-            <p class="card__price">Цена: <span th:text="${bike.price}">0.0</span></p>
-            <p class="card__status">Статус:
-                <span th:text="${bike.rented} ? 'Арендован' : 'Доступен'"></span>
-            </p>
+    <div class="cards-grid">
+        <div class="card" th:each="bike : ${bikes}">
+            <img th:src="@{${bike.imageUrl}}" alt="Картинка велосипеда" style="max-width: 300px;">
+            <h3 th:text="${bike.title}"></h3>
+            <p th:text="${bike.description}"></p>
+            <p>Цена: <span th:text="${bike.price}">0</span></p>
+            <p>Статус: <span th:text="${bike.rented ? 'Арендован' : 'Доступен'}"></span></p>
             <a class="btn-primary" th:href="@{/bikes/{id}(id=${bike.id})}">Подробнее</a>
         </div>
+
     </div>
 </div>
 
