@@ -323,3 +323,21 @@ body {
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.btn-register {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff; /* Синий цвет кнопки */
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-register:hover {
+    background-color: #0056b3; /* Цвет при наведении */
+}
