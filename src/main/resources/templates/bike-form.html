@@ -52,13 +52,21 @@
             </label>
         </p>
 
-        <form method="post" action="/bikes/${bike.id}/uploadImage" enctype="multipart/form-data">
-            <label for="file">Загрузить изображение:</label>
-            <input type="file" name="file" id="file" required>
+        <p>
+            <form method="post" action="/admin/new" enctype="multipart/form-data">
+                <label for="file">
+                    Загрузить изображение:
+                    <input type="file"
+                           id="file"
+                           name="file"
+                           th:required="${bike.imageUrl == null}"/>
+                </label>
+            </form>
+        </p>
+
+        <form method="post" action="/bikes/save" 90>
+            <button type="submit" class="btn-primary">Сохранить</button>
         </form>
-
-
-        <button type="submit" class="btn-primary">Сохранить</button>
     </form>
 
 </div>
