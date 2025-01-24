@@ -1,59 +1,46 @@
 package org.example.javaspring.bikerental.entities;
+
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "rentals")
 public class Rental {
+
     @Id
-    @Column(name = "rentalid")
-    private Long rentalId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "userid")
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column(name = "bicycleid")
-    private Long bicycleId;
+    @ManyToOne
+    @JoinColumn(name = "bike_id")
+    private Bike bike;
 
-    private LocalDateTime startdate;
-    private LocalDateTime enddate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
 
-    private Double cost;
+    public Rental() {
+    }
 
-    public Long getRentalId() {
-        return rentalId;
+    public Rental(User user, Bike bike, LocalDateTime startDate, LocalDateTime endDate) {
+        this.user = user;
+        this.bike = bike;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
-    public void setRentalId(Long rentalId) {
-        this.rentalId = rentalId;
-    }
-    public Long getUserId() {
-        return userId;
-    }
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-    public Long getBicycleId() {
-        return bicycleId;
-    }
-    public void setBicycleId(Long bicycleId) {
-        this.bicycleId = bicycleId;
-    }
-    public LocalDateTime getStartdate() {
-        return startdate;
-    }
-    public void setStartdate(LocalDateTime startdate) {
-        this.startdate = startdate;
-    }
-    public LocalDateTime getEnddate() {
-        return enddate;
-    }
-    public void setEnddate(LocalDateTime enddate) {
-        this.enddate = enddate;
-    }
-    public Double getCost() {
-        return cost;
-    }
-    public void setCost(Double cost) {
-        this.cost = cost;
-    }
+
+    public Long getId() { return id; }
+    public User getUser() { return user; }
+    public Bike getBike() { return bike; }
+    public LocalDateTime getStartDate() { return startDate; }
+    public LocalDateTime getEndDate() { return endDate; }
+
+    public void setId(Long id) { this.id = id; }
+    public void setUser(User user) { this.user = user; }
+    public void setBike(Bike bike) { this.bike = bike; }
+    public void setStartDate(LocalDateTime startDate) { this.startDate = startDate; }
+    public void setEndDate(LocalDateTime endDate) { this.endDate = endDate; }
 }

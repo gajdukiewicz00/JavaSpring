@@ -1,6 +1,5 @@
 package org.example.javaspring.bikerental.entities;
 
-
 import jakarta.persistence.*;
 
 @Entity
@@ -11,34 +10,30 @@ public class Bike {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String imageUrl;
-    private String shortDesc;
-    private String fullDesc;
-    private Double pricePerHour;
+    private String title;
+    private String description;
+    private boolean rented;
+    private double price;
 
-    public Bike() {}
-    public Bike(String name, String imageUrl, String shortDesc, String fullDesc, Double pricePerHour) {
-        this.name = name;
-        this.imageUrl = imageUrl;
-        this.shortDesc = shortDesc;
-        this.fullDesc = fullDesc;
-        this.pricePerHour = pricePerHour;
+    public Bike() {
+    }
+
+    public Bike(String title, String description, boolean rented, double price) {
+        this.title = title;
+        this.description = description;
+        this.rented = rented;
+        this.price = price;
     }
 
     public Long getId() { return id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getTitle() { return title; }
+    public String getDescription() { return description; }
+    public boolean isRented() { return rented; }
+    public double getPrice() { return price; }
 
-    public String getImageUrl() { return imageUrl; }
-    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
-
-    public String getShortDesc() { return shortDesc; }
-    public void setShortDesc(String shortDesc) { this.shortDesc = shortDesc; }
-
-    public String getFullDesc() { return fullDesc; }
-    public void setFullDesc(String fullDesc) { this.fullDesc = fullDesc; }
-
-    public Double getPricePerHour() { return pricePerHour; }
-    public void setPricePerHour(Double pricePerHour) { this.pricePerHour = pricePerHour; }
+    public void setId(Long id) { this.id = id; }
+    public void setTitle(String title) { this.title = title; }
+    public void setDescription(String description) { this.description = description; }
+    public void setRented(boolean rented) { this.rented = rented; }
+    public void setPrice(double price) { this.price = price; }
 }

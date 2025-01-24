@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Информация о велосипеде</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header class="header">
+    <div class="header__logo">BikeRental</div>
+    <nav class="header__nav">
+        <a class="nav-btn" th:href="@{/}">Главная</a>
+
+        <span th:if="${session.userRole} == 'ADMIN'">
+            <a class="nav-btn" th:href="@{/admin}">Админ-панель</a>
+        </span>
+
+        <span th:if="${session.userId} != null">
+            <a class="nav-btn" th:href="@{/auth/logout}">Выход</a>
+        </span>
+        <span th:if="${session.userId} == null">
+            <a class="nav-btn" th:href="@{/auth/login}">Вход</a>
+            <a class="nav-btn" th:href="@{/auth/register}">Регистрация</a>
+        </span>
+    </nav>
+</header>
+
+<div class="container">
+    <h1 class="title" th:text="${bike.title}">Bike Title</h1>
+    <p th:text="${bike.description}">Описание велосипеда...</p>
+    <p>Цена: <span th:text="${bike.price}">0.0</span></p>
+    <p>Статус: <span th:text="${bike.rented} ? 'Арендован' : 'Доступен'">Статус</span></p>
+
+    <div th:if="${!bike.rented}">
+        <form th:action="@{/bikes/{id}/rent(id=${bike.id})}" method="post">
+            <button class="btn-primary" type="submit">Арендовать</button>
+        </form>
+    </div>
+    <div th:if="${bike.rented}">
+        <p>Этот велосипед уже арендован.</p>
+    </div>
+
+    <p style="margin-top: 1rem;">
+        <a class="nav-btn" th:href="@{/}">Вернуться на главную</a>
+    </p>
+</div>
+
+</body>
+</html>

@@ -1,34 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
-    <title>Главная</title>
+    <title>Bike Rental - Главная</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
 </head>
 <body>
-<div class="navbar">
-    <div class="logo">BikeRental</div>
-    <div>
-        <a href="/">Главная</a>
-        <a href="/bikes">Список велосипедов</a>
-        <a href="/logout">Выйти</a>
-        <a href="login.html">Login</a>
-    </div>
-</div>
+
+<header class="header">
+    <div class="header__logo">BikeRental</div>
+    <nav class="header__nav">
+        <span th:if="${session.userId} == null">
+            <a class="nav-btn" th:href="@{/auth/login}">Вход</a>
+            <a class="nav-btn" th:href="@{/auth/register}">Регистрация</a>
+        </span>
+        <span th:if="${session.userId} != null">
+            <span th:if="${session.userRole} == 'ADMIN'">
+                <a class="nav-btn" th:href="@{/admin}">Админ-панель</a>
+            </span>
+            <a class="nav-btn" th:href="@{/auth/logout}">Выход</a>
+        </span>
+    </nav>
+</header>
+
 <div class="container">
-    <h1>Добро пожаловать в BikeRental</h1>
-    <h2>Ваши последние аренды:</h2>
-    <div class="card">
-        <h3>Горный велосипед</h3>
-        <p>Дата: 20 января 2025</p>
-        <p>Цена: 500 руб./день</p>
-    </div>
-    <div class="card">
-        <h3>Городской велосипед</h3>
-        <p>Дата: 18 января 2025</p>
-        <p>Цена: 300 руб./день</p>
+    <h1 class="title">Список велосипедов</h1>
+
+    <div class="cards-grid" th:each="bike : ${bikes}">
+        <div class="card">
+            <div class="card__title" th:text="${bike.title}">Название велосипеда</div>
+            <p class="card__desc" th:text="${bike.description}">Описание</p>
+            <p class="card__price">Цена: <span th:text="${bike.price}">0.0</span></p>
+            <p class="card__status">Статус:
+                <span th:text="${bike.rented} ? 'Арендован' : 'Доступен'"></span>
+            </p>
+            <a class="btn-primary" th:href="@{/bikes/{id}(id=${bike.id})}">Подробнее</a>
+        </div>
     </div>
 </div>
+
 </body>
 </html>

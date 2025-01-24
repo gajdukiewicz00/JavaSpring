@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Админ-панель</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+</head>
+<body>
+
+<header class="header">
+    <div class="header__logo">BikeRental</div>
+    <nav class="header__nav">
+        <a class="nav-btn" th:href="@{/}">Главная</a>
+        <a class="nav-btn" th:href="@{/auth/logout}">Выход</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h1 class="title">Админ-панель</h1>
+
+    <p>
+        <a class="btn-primary" th:href="@{/admin/new}">Добавить новый велосипед</a>
+    </p>
+
+    <table class="admin-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Цена</th>
+            <th>Статус</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bike : ${bikes}">
+            <td th:text="${bike.id}"></td>
+            <td th:text="${bike.title}"></td>
+            <td th:text="${bike.description}"></td>
+            <td th:text="${bike.price}"></td>
+            <td th:text="${bike.rented} ? 'Арендован' : 'Доступен'"></td>
+            <td>
+                <a class="btn-primary" th:href="@{/admin/{id}/edit(id=${bike.id})}">Редактировать</a>
+                <form th:action="@{/admin/{id}/delete(id=${bike.id})}" method="post" style="display:inline">
+                    <button type="submit" class="btn-danger">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
