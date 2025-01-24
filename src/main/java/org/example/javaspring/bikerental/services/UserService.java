@@ -15,7 +15,7 @@ public class UserService {
 
     public User registerUser(String name, String email, String password, String role) {
         if (userRepository.findByEmail(email) != null) {
-            return null; // в реальном проекте можно бросать исключение
+            return null;
         }
         User user = new User(name, email, password, role);
         return userRepository.save(user);

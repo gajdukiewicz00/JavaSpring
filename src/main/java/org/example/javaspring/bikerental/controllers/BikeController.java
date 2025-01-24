@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -78,16 +77,13 @@ public class BikeController {
                            @RequestParam(value = "file", required = false) MultipartFile file,
                            Model model) {
         try {
-            // Создаём объект Bike
             Bike bike = new Bike();
             bike.setTitle(title);
             bike.setDescription(description);
             bike.setPrice(price);
             bike.setRented(false);
 
-            // Проверяем наличие файла
             if (file != null && !file.isEmpty()) {
-                // Сохраняем файл
                 String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
                 String uploadDir = "src/main/resources/static/images/";
                 Path filePath = Paths.get(uploadDir + fileName);
@@ -96,11 +92,10 @@ public class BikeController {
 
                 bike.setImageUrl("/images/" + fileName);
             } else {
-                // Устанавливаем изображение по умолчанию
                 bike.setImageUrl("/images/default-bike.jpg");
             }
 
-            // Сохраняем объект в базе данных
+
             bikeRepository.save(bike);
 
             return "redirect:/admin";
@@ -112,14 +107,10 @@ public class BikeController {
     }
 
 
-
-
     @GetMapping("/bikes/edit/{id}")
     public String editBike(@PathVariable Long id, Model model) {
         Bike bike = bikeRepository.findById(id).orElseThrow(() -> new RuntimeException("Bike not found"));
         model.addAttribute("bike", bike);
         return "bike-form";
     }
-
-
 }

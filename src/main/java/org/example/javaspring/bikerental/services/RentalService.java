@@ -22,7 +22,7 @@ public class RentalService {
 
     public Rental startRental(User user, Bike bike) {
         if (bike.isRented()) {
-            return null; // велосипед уже в аренде
+            return null;
         }
         bike.setRented(true);
         bikeRepository.save(bike);

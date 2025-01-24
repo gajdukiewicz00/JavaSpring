@@ -1,6 +1,7 @@
 package org.example.javaspring.bikerental.entities;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -32,15 +33,43 @@ public class Rental {
         this.endDate = endDate;
     }
 
-    public Long getId() { return id; }
-    public User getUser() { return user; }
-    public Bike getBike() { return bike; }
-    public LocalDateTime getStartDate() { return startDate; }
-    public LocalDateTime getEndDate() { return endDate; }
+    public Long getId() {
+        return id;
+    }
 
-    public void setId(Long id) { this.id = id; }
-    public void setUser(User user) { this.user = user; }
-    public void setBike(Bike bike) { this.bike = bike; }
-    public void setStartDate(LocalDateTime startDate) { this.startDate = startDate; }
-    public void setEndDate(LocalDateTime endDate) { this.endDate = endDate; }
+    public User getUser() {
+        return user;
+    }
+
+    public Bike getBike() {
+        return bike;
+    }
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setBike(Bike bike) {
+        this.bike = bike;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
 }

@@ -10,7 +10,6 @@ body {
     color: #202124;
 }
 
-/* ШАПКА */
 .header {
     display: flex;
     align-items: center;
@@ -60,14 +59,14 @@ body {
     border: 1px solid #ddd;
     border-radius: 6px;
     padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .card__title {
@@ -137,20 +136,23 @@ body {
     width: 100%;
     margin-top: 1rem;
 }
+
 .admin-table th,
 .admin-table td {
     padding: 0.6rem;
     border: 1px solid #dadce0;
 }
+
 .admin-table thead {
     background-color: #f8f9fa;
 }
+
 .admin-table td {
     vertical-align: middle;
 }
 
 .btn-danger {
-    background-color: #ea4335; /* красный Google */
+    background-color: #ea4335;
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
@@ -159,6 +161,7 @@ body {
     font-weight: 500;
     transition: background-color 0.2s;
 }
+
 .btn-danger:hover {
     background-color: #d93025;
 }
@@ -175,13 +178,13 @@ body {
     border: 1px solid #ddd;
     border-radius: 6px;
     padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .card__title {
@@ -211,6 +214,7 @@ body {
     font-weight: 500;
     transition: background-color 0.2s;
 }
+
 .btn-primary:hover {
     background-color: #3367d6;
 }
@@ -234,11 +238,13 @@ body {
     background-color: #4285f4;
     padding: 0.5rem 1rem;
 }
+
 .header__logo {
     font-size: 1.5rem;
     color: #fff;
     font-weight: bold;
 }
+
 .header__nav .nav-btn {
     color: #fff;
     text-decoration: none;
@@ -270,13 +276,13 @@ body {
     border: 1px solid #ddd;
     border-radius: 6px;
     padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .card__title {
@@ -310,6 +316,7 @@ body {
 .btn-primary:hover {
     background-color: #3367d6;
 }
+
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -331,7 +338,7 @@ body {
     font-size: 14px;
     font-weight: bold;
     color: white;
-    background-color: #007bff; /* Синий цвет кнопки */
+    background-color: #007bff;
     text-decoration: none;
     border-radius: 5px;
     border: none;
@@ -339,5 +346,5 @@ body {
 }
 
 .btn-register:hover {
-    background-color: #0056b3; /* Цвет при наведении */
+    background-color: #0056b3;
 }
