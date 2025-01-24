@@ -28,15 +28,16 @@
 
     <div class="cards-grid">
         <div class="card" th:each="bike : ${bikes}">
-            <img th:src="${bike.imageUrl}" alt="${bike.title}" style="max-width: 300px;">
+            <!-- Подгрузка изображения -->
+            <img th:src="@{${bike.imageUrl}}"
+                 alt="Изображение велосипеда"
+                 style="max-width: 300px; max-height: 200px; object-fit: cover; border: 1px solid #ddd; margin-bottom: 10px;">
             <h3 th:text="${bike.title}"></h3>
             <p th:text="${bike.description}"></p>
-            <p>Цена: <span th:text="${bike.price}">0</span></p>
+            <p>Цена: <span th:text="${bike.price}">0</span> руб.</p>
             <p>Статус: <span th:text="${bike.rented ? 'Арендован' : 'Доступен'}"></span></p>
             <a class="btn-primary" th:href="@{/bikes/{id}(id=${bike.id})}">Подробнее</a>
         </div>
-
-    </div>
 </div>
 
 </body>

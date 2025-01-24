@@ -35,10 +35,11 @@ public class BikeController {
     }
 
     @GetMapping("/")
-    public String index(Model model, HttpSession session) {
+    public String index(Model model) {
         model.addAttribute("bikes", bikeService.findAll());
         return "index";
     }
+
 
     @GetMapping("/bikes/{id}")
     public String bikeDetail(@PathVariable Long id, Model model) {

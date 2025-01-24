@@ -27,7 +27,9 @@
 
 <div class="container">
     <h1 class="title" th:text="${bike.title}">Bike Title</h1>
-    <img src="${bike.imageUrl}" alt="${bike.title}" id="bikeImage">
+    <img th:src="@{${bike.imageUrl}}"
+         alt="Изображение велосипеда"
+         style="max-width: 300px; max-height: 200px; object-fit: cover; border: 1px solid #ddd; margin-bottom: 10px;">
     <p th:text="${bike.description}">Описание велосипеда...</p>
     <p>Цена: <span th:text="${bike.price}">0.0</span></p>
     <p>Статус: <span th:text="${bike.rented} ? 'Арендован' : 'Доступен'">Статус</span></p>
